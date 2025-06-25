@@ -163,3 +163,76 @@ print(matrix)
 * ✔️ `list(map(...))` is your best friend for 2D array input
 * ❌ `arr = list(arr)` only creates a shallow copy — does not fix inner `map` objects
 * 🧠 Understand lazy evaluation and one-time consumption of iterators
+
+
+## 🔒 Enforcing Fixed Columns in 2D Array Input in Python
+
+---
+
+### ❓**Q: Can we directly enforce column count using list comprehension?**
+
+```python
+rows, cols = map(int, input("Enter rows and cols: ").split())
+arr = [[list(map(int, input().split())) for _ in range(cols)] for _ in range(rows)]
+```
+
+### ❌ **Answer: No, you can't!**
+
+* The above code creates a **3D array**, not a typical 2D array.
+* More importantly, `list(map(int, input().split()))` **accepts any number of inputs** typed by the user — there's **no enforcement** of exactly `cols` values.
+* There’s no retry mechanism inside a list comprehension.
+
+---
+
+### ✅ **Correct and Safe Way to Enforce Fixed Columns Per Row**
+
+Use a `while` loop **outside** the comprehension:
+
+```python
+rows, cols = map(int, input("Enter rows and cols: ").split())
+
+arr = []
+for i in range(rows):
+    while True:
+        row = list(map(int, input(f"Enter {cols} integers for row {i+1}: ").split()))
+        if len(row) == cols:
+            arr.append(row)
+            break
+        else:
+            print(f"❌ Please enter exactly {cols} integers.")
+```
+
+---
+
+### 🧪 Example Session
+
+**Input:**
+
+```
+Enter rows and cols: 2 3
+Enter 3 integers for row 1: 1 2
+❌ Please enter exactly 3 integers.
+Enter 3 integers for row 1: 1 2 3
+Enter 3 integers for row 2: 4 5 6
+```
+
+**Output:**
+
+```python
+[[1, 2, 3], [4, 5, 6]]
+```
+
+---
+
+### 🔁 Recap
+
+| Method                            | Can enforce column count? | Retry on wrong input? | Suitable for user input? |
+| --------------------------------- | ------------------------- | --------------------- | ------------------------ |
+| `list(map(int, input().split()))` | ❌ No                      | ❌ No                  | ❌ Not safe               |
+| `while` loop + `len(row) == cols` | ✅ Yes                     | ✅ Yes                 | ✅ Recommended            |
+
+---
+
+### 📝 Final Tip
+
+> 💡 You **must** manually check `len(row) == cols` if you want strict input. List comprehensions don't support retry or validation logic. Always use a loop for validated input.
