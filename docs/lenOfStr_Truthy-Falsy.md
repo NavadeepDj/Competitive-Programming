@@ -1,5 +1,6 @@
 Sure! Here's a complete and well-formatted `README.md` for your GitHub repo, documenting how to calculate the **length of a string without using `len()`**, including your code, explanation, and a **mini truthy/falsy cheat sheet** at the end.
 
+The reference for the code is here: [code for length without len()](https://github.com/NavadeepDj/Competitive-Programming/blob/main/InterestingYET_Problems/lenOfStr_without%20Built%20in.py)
 ---
 
 # 🔢 Finding Length of a String Without `len()` in Python
