@@ -50,9 +50,45 @@ class LinkedList:
         temp.next = new_node 
         # self.head.next = new_node
 
+    def insertAtMiddle(self, data, pos):
+        new_node = Node(data)
+        if pos == 1:
+            l1.insertAtBeginning(data)
+            return
+        temp  = self.head
+        for i in range(1, pos-1):
+            temp = temp.next
+        prev = temp.next
+        temp.next = new_node
+        # prev = prev.next
+        new_node.next = prev
+        
+      
+        # head -> 1 -> 10 -> insert(100) -> 20-> 30-> 40-> None
+        
+        # pos  -> 1 -> 2  -> 3           -> 4 -> 5 -> 6[We are trying to insert the element at pos 2; i.e., at 2nd element]
+        
+        
+    def deleteAtMiddle(self, pos):
+        if pos == 1:
+            l1.deleteAtbeginning()
+            return
+        temp = self.head
+        for i in range(1, pos):
+            prev = temp
+            temp = temp.next
+        temp1 = temp.next
+        prev.next = temp1
+        
+        
+            
+        
+            
+            
         
         
         
+      
     def printOut(self):
         temp =self.head
         while temp:
@@ -79,8 +115,11 @@ l1.insertAtEnd(10)
 l1.insertAtEnd(90)
 l1.insertAtEnd(30)
 l1.insertAtEnd(40)
+l1.insertAtEnd(60)
 # l1.deleteAtbeginning()
-l1.deleteAtEnd()
+l1.insertAtMiddle(100, 1)
+# l1.deleteAtEnd()
+l1.deleteAtMiddle(2)
 
 # # l1.printOut()
 # data = int(input())
