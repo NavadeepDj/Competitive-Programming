@@ -342,6 +342,8 @@ def insertAtBeginning(self, data):
 
 ### ❗ What If We Don't Use `return`?
 
+A common issue in linked list manipulation, specifically the creation of an infinite single-node circular loop, can arise from the absence of a `return` statement. For a concrete illustration of this bug, refer to the provided [Bugged Code Implementation](https://github.com/NavadeepDj/Competitive-Programming/blob/main/DataStructures/LinkedLists/Infinite_singleNode_circular%20loop.py). This example demonstrates how the lack of a clear exit point can lead to uncontrolled recursion or iteration.
+
 Without `return`, it proceeds to execute `new_node.next = temp` even when `temp` is `None`, which works, but you can optimize by stopping early.
 
 ---
