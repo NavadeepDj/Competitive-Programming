@@ -1,4 +1,12 @@
-class Node:
+'''
+
+                            Online Python Compiler.
+                Code, Compile, Run and Debug python program online.
+Write your code in this editor and press "Run" button to execute it.
+
+'''
+
+print("Hello World")class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -27,12 +35,22 @@ class DoublyLinkedList:
         
         temp = self.head
         while temp!= None:
+            print(temp.data, end = "->")
+            previ = temp
+            temp = temp.next
+        print(None)
+        
+    
+    def printReverse(self):
+        
+        temp = self.head
+        while temp!= None:
             # print(temp.data, end = " -> ")
             previ = temp
             temp = temp.next
             
             # print(temp.data)
-        
+    
         # temp = temp.prev   
         while previ != None:
             print(previ.data, end = "->")
@@ -52,6 +70,8 @@ d1.insertAtEnd(3)
 
 
 d1.printOut()
+print()
+d1.printReverse()
 
         
         
